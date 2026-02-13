@@ -1,0 +1,3 @@
+@echo off
+echo Opening Valentine's Proposal...
+start index.html

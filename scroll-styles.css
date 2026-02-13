@@ -1,0 +1,145 @@
+/* Horizontal Scroll Container */
+.scroll-container-wrapper {
+    width: 100%;
+    margin: 20px 0 30px 0;
+    overflow: hidden;
+    position: relative;
+    /* Create fade effect on sides */
+    mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+}
+
+.horizontal-scroll-container {
+    display: flex;
+    overflow-x: auto;
+    gap: 15px;
+    padding: 10px 20px;
+    scroll-behavior: smooth;
+    /* Hide scrollbar */
+    scrollbar-width: none;
+    /* Firefox */
+    -ms-overflow-style: none;
+    /* IE and Edge */
+    cursor: grab;
+    -webkit-overflow-scrolling: touch;
+    /* Momentum scroll on iOS */
+    padding-bottom: 20px;
+    /* Space for shadow without clip */
+}
+
+.horizontal-scroll-container::-webkit-scrollbar {
+    display: none;
+}
+
+.horizontal-scroll-container:active {
+    cursor: grabbing;
+}
+
+.scroll-card {
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 15px;
+    padding: 15px 20px;
+    min-width: 250px;
+    /* Card Width */
+    max-width: 300px;
+    flex-shrink: 0;
+    color: #fff;
+    font-size: 0.95rem;
+    font-style: italic;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, background 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.scroll-card:hover {
+    transform: translateY(-5px) scale(1.02);
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.scroll-card p {
+    margin: 0;
+    line-height: 1.4;
+}
+
+/* Final Quotes Grid */
+.final-quotes-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    margin: 25px 0;
+}
+
+.quote-pill {
+    background: rgba(255, 255, 255, 0.25);
+    padding: 8px 16px;
+    border-radius: 20px;
+    color: white;
+    font-size: 0.9rem;
+    font-weight: 500;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    animation: popInPill 0.5s ease backwards;
+}
+
+.quote-pill:nth-child(1) {
+    animation-delay: 0.8s;
+}
+
+.quote-pill:nth-child(2) {
+    animation-delay: 1.0s;
+}
+
+.quote-pill:nth-child(3) {
+    animation-delay: 1.2s;
+}
+
+.quote-pill:nth-child(4) {
+    animation-delay: 1.4s;
+}
+
+/* Animation for pills */
+@keyframes popInPill {
+    0% {
+        transform: scale(0.5);
+        opacity: 0;
+    }
+
+    80% {
+        transform: scale(1.1);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* Ensure horizontal scroll fits on mobile */
+@media (max-width: 480px) {
+    .horizontal-scroll-container {
+        padding: 5px 15px;
+        gap: 10px;
+    }
+
+    .scroll-card {
+        min-width: 220px;
+        font-size: 0.85rem;
+        padding: 12px 15px;
+    }
+
+    .final-quotes-grid {
+        gap: 8px;
+    }
+
+    .quote-pill {
+        font-size: 0.8rem;
+        padding: 6px 12px;
+    }
+}
